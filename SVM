@@ -1,0 +1,9 @@
+from sklearn.svm import SVC
+Classifier=SVC(kernel="linear",random_state=0)
+Classifier.fit(xtrain,ytrain)
+###
+y_pred=Classifier.predict(xtest)
+###
+from sklearn.metrics import recall_score
+print("recallscore:",recall_score(ytest,y_pred))
+#(same as confusion matrix,accuracy,precision)
