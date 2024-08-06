@@ -1,3 +1,23 @@
+import pandas as pd
+import numpy as np
+dataset=pd.read_csv("User_Data.csv")
+dataset
+##
+x=dataset.iloc[:,[2,3]].values
+y=dataset.iloc[:,4].values
+##
+from sklearn.model_selection import train_test_split
+xtrain,xtest,ytrain,ytest=train_test_split(x,y,test_size=0.25)
+##
+from sklearn.preprocessing import StandardScaler
+sc_x=StandardScaler()
+xtrain=sc_x.fit_transform(xtrain)
+xtest=sc_x.transform(xtest)
+print(xtrain[0:10, :])
+print(xtest[0:10, :])
+#or
+print(xtrain[:])
+print(xtest[:])
 from sklearn.svm import SVC
 Classifier=SVC(kernel="linear",random_state=0)
 Classifier.fit(xtrain,ytrain)
